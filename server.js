@@ -1,5 +1,15 @@
 var express = require("express");
 var app = express();
+var mongoose = require("mongoose");
+
+mongoose
+  .connect("mongodb://127.0.0.1:27107/test")
+  .then(() => {
+    console.log("connected db");
+  })
+  .catch(err => {
+    console.log("not connected to db");
+  });
 
 app.get("/", (req, res) => {
   res.send("this is the home page");
